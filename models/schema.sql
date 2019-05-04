@@ -1,5 +1,5 @@
-DROP DATABASE IF EXISTS exampledb;
-CREATE DATABASE exampledb;
+-- Drops movies database if already exists --
+DROP DATABASE IF EXISTS movies_db;
+-- Creates movies database for use with current project --
+CREATE DATABASE movies_db;
 
-DROP DATABASE IF EXISTS testdb;
-CREATE DATABASE testdb;
