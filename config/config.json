@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": null,
+    "password": "Frogsand1!",
     "database": "movies_db",
     "host": "localhost",
     "dialect": "mysql"
