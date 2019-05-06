@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  let Movie = sequelize.define("movie", {
+  let Movie = sequelize.define("Movie", {
     title: DataTypes.STRING,
     posterURL: DataTypes.STRING
   });

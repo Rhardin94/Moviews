@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  let Review = sequelize.define("review", {
+  let Review = sequelize.define("Review", {
     text: DataTypes.STRING,
     spoiler: {
       type: DataTypes.BOOLEAN,
