@@ -3,17 +3,24 @@
     <div class="row">
       <div class="col-8 offset-2">
         <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
+        <h2>Movie Review Application</h2>
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
+            <label for="example-text">Your Name:</label>
+            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="John Doe">
           </div>
           <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
+            <label for="movies-seen">Movies Select:</label>
+            <p><strong> Select the movies you've seen before. You may control-click (Windows) or command-click (Mac) to select more then one.</strong></p>
+            <select multiple size="6">
+              <option value= "1">Avengers: Endgame</option>
+              <option value= "2">Pokemon Detective Pikachu</option>
+              <option value= "3">Shazam!</option>
+              <option value= "4">Us</option>
+              <option value= "5">Long Shot</option>
+            </select>
           </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
+          <button id="movies-submit" class="btn btn-primary float-right">Submit</button>
         </form>
         <h3>Examples:</h3>
         <ul id="example-list" class="list-group">
