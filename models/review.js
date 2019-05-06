@@ -6,5 +6,12 @@ module.exports = function (sequelize, DataTypes) {
       defaultValue: false
     }
   });
+  Review.associate = function(models) {
+    Review.belongsTo(models.Movie, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  }
   return Review;
 }

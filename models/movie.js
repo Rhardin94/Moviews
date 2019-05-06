@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
     posterURL: DataTypes.STRING
   });
   Movie.associate = function(models) {
-    Movie.hasMany(models.review, {
+    Movie.hasMany(models.Review, {
       onDelete: "cascade"
     });
   };
