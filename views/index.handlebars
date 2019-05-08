@@ -1,9 +1,36 @@
+{{> nav/nav-block}}
 <div id="home">
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>Movie Review Application</h2>
+        <div class="row">
+          <!--Displays reviews that are non spoilers-->
+          <div class="col-md-6">
+            <div class="review-feed">
+              <ul>
+                {{#each review}}
+                {{#unless spoiler}}
+                {{> reviews/reviews-block spoiler=true}}
+                {{/unless}}
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+          <!--Hides reviews with spoilers, unless onclick event reveals these-->
+          <div class="col-md-6">
+            <div class="review-feed buryIt">
+              <ul>
+                {{#each review}}
+                {{#if spoiler}}
+                {{> reviews/reviews-block spoiler=false}}
+                {{/if}}
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!--
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
             <label for="example-text">Your Name:</label>
@@ -24,24 +51,7 @@
           </div>
           <button id="movies-submit" class="btn btn-primary float-right">Submit</button>
         </form>
-        <h3>Reviews - we can move to another file</h3>
-        <h3>Let's show non-spoiler reviews...in the works</h3>
-        <ul id="example-list" class="list-group">
-          {{#each movies}}
-          {{#unless spoiler}}
-          {{> movies/movies-block spoiler=true}}
-          {{/unless}}
-          {{/each}}
-        </ul>
-
-        <h3>Let's hide these for now...but these are spoiler reviews. Potentially show if user wants the spoilers?</h3>
-        <ul>
-          {{#each movies}}
-          {{#if spoiler}}
-          {{> movies/movies-block spoiler=false}}
-          {{/if}}
-          {{/each}}
-        </ul>
+        -->
 
         <li data-id="{{this.id}}" class="list-group-item">
           <a href="example/{{this.id}}">{{this.text}}</a>
@@ -54,5 +64,5 @@
   </div>
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="../js/index.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="/js/index.js"></script>
