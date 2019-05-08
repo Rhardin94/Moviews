@@ -1,27 +1,17 @@
-/*let mysql = require("mysql");
-let connection;
+//The core Firebase JS SDK is always required and must be listed first
+//<script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
 
-if (process.env.JAWSDB_URL) {
-  connection =  mysql.createConnection(process.env.JAWSDB_URL);
-  // JAWS_DB to make sure this deploys to Heroku successfully.
-} else {
-  // Local connection for testing.
-  connection = mysql.createConnection({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: null,
-    database: "movies_db"
-  });
-};
+// TODO: Add SDKs for Firebase products that you want to use
+  //  https://firebase.google.com/docs/web/setup#config-web-app -->
 
-connection.connect(function(err) {
-    if (err) {
-      console.error("error connecting: " + err.stack);
-      return;
-    }
-    console.log("connected as id " + connection.threadId);
-  });
-  
-  module.exports = connection;
-  */
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAXJhN9GMJrJAHB0qVLx6xva2eSWgtDfSM",
+    authDomain: "movie-reviews-team5.firebaseapp.com",
+    databaseURL: "https://movie-reviews-team5.firebaseio.com",
+    projectId: "movie-reviews-team5",
+    storageBucket: "movie-reviews-team5.appspot.com",
+    messagingSenderId: "599160193623",
+    appId: "1:599160193623:web:1549d5f2db103b13"
+  };
+module.exports = firebaseConfig;
