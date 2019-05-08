@@ -2,26 +2,26 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Load index page
-  app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+  app.get("/", (req, res) => {
+    db.Movie.findAll({}).then((results) => {
       res.render("index", {
         msg: "Welcome!",
-        examples: dbExamples
+        movies: results
       });
     });
   });
 
   // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
+  app.get("/movie/:id", (req, res) => {
+    db.Movie.findOne({ where: { id: req.params.id } }).then((results) => {
       res.render("example", {
-        example: dbExample
+        movie: results
       });
     });
   });
 
   // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
+  app.get("*", (req, res) => {
     res.render("404");
   });
 };
