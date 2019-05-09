@@ -1,5 +1,8 @@
 require("dotenv").config();
+require("./config/passport/passport")(passport, models.user);
+const passport = require("passport");
 const express = require("express");
+const session = require("express-session");
 const exphbs = require("express-handlebars");
 const db = require("./models");
 const app = express();
@@ -16,6 +19,10 @@ app.engine(
   })
 );
 app.set("view engine", "handlebars");
+//Passport sessions
+app.use(session({secret: "keyboard cat", resave: true, saveUninitialized: true}));
+app.use(passport.initialize());
+app.use(passport.session()); 
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
@@ -34,5 +41,7 @@ db.sequelize.sync(syncOptions).then(function() {
       PORT
     );
   });
+}).catch((err) => {
+  console.log(err, "Something went wrong with db update!");
 });
 module.exports = app;

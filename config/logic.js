@@ -1,3 +1,5 @@
+const firebase = require("firebase/app");
+require("firebase/auth");
 const firebaseConfig = require("./connection");
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

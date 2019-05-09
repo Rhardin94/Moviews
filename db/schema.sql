@@ -1,21 +1,7 @@
 -- Drops movies database if already exists --
--- DROP DATABASE IF EXISTS movies_db;
+DROP DATABASE IF EXISTS movies_db;
 -- Creates movies database for use with current project --
--- CREATE DATABASE movies_db;
-
-USE movies_db;
-
-CREATE TABLE movie (
-id INT NOT NULL auto_increment primary key,
-title VARCHAR(100) NOT NULL,
-posterURL VARCHAR(300) NOT NULL
-);
-
-CREATE TABLE review (
-id INT NOT NULL auto_increment primary key, 
-text VARCHAR(500) NOT NULL,
-spoiler BOOLEAN
-);
+CREATE DATABASE movies_db;
 
 -- DROP TABLE movie;
 -- DROP TABLE review

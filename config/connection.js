@@ -1,6 +1,9 @@
 //The core Firebase JS SDK is always required and must be listed first
 //<script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
 
+const firebase = require("firebase/app");
+require("firebase/auth");
+
 // TODO: Add SDKs for Firebase products that you want to use
   //  https://firebase.google.com/docs/web/setup#config-web-app -->
 
