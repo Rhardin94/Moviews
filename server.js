@@ -1,5 +1,8 @@
+//Importing .env configuration for .env sensitive information
 require("dotenv").config();
+//Importing passport strategies
 require("./config/passport/passport")(passport, models.user);
+//Dependencies
 const passport = require("passport");
 const express = require("express");
 const session = require("express-session");
@@ -26,6 +29,7 @@ app.use(passport.session());
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
+require("./routes/auth")(app, passport);
 let syncOptions = { force: false };
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`

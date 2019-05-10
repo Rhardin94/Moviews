@@ -10,7 +10,7 @@
     "rules": {
         "indent": [
             "error",
-            "space"
+            "spaces"
         ],
         "linebreak-style": [
             "error",

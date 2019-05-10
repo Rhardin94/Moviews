@@ -27,10 +27,9 @@ module.exports = function (passport, user) {
           {
             email: email,
             password: userPassword,
-            firstname: req.body.firstname,
-            lastname: req.body.lastname
+            name: req.body.name
           };
-        User.create(data).then(function (newUser, created) {
+        User.create(data).then(function(newUser, created) {
           if (!newUser) {
             return done(null, false);
           }
@@ -41,4 +40,18 @@ module.exports = function (passport, user) {
       }
     })
   ));
+  //Serialize user
+  passport.serialieUser(function(user, done) {
+    done(null, user.id);
+  });
+  //Deserialize user
+  passport.deserializeUser(function(id, done) {
+    User.findById(id).then(function(user) {
+    if (user) {
+      done(null, user.get());
+    } else {
+      done(user.errors, null);
+    }
+  });
+});
 }
