@@ -1,4 +1,4 @@
-const firebase = require("firebase/app");
+/*const firebase = require("firebase/app");
 require("firebase/auth");
 const firebaseConfig = require("./connection");
 // Initialize Firebase
@@ -16,4 +16,4 @@ connectedRef.on("value", (snap) => {
     let con = connectionsRef.push(true);
     con.onDisconnect().remove();
   }
-});
+});*/

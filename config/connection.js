@@ -1,4 +1,4 @@
-//The core Firebase JS SDK is always required and must be listed first
+/*//The core Firebase JS SDK is always required and must be listed first
 //<script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
 
 const firebase = require("firebase/app");
@@ -17,4 +17,4 @@ require("firebase/auth");
     messagingSenderId: "599160193623",
     appId: "1:599160193623:web:1549d5f2db103b13"
   };
-module.exports = firebaseConfig;
+module.exports = firebaseConfig;*/
