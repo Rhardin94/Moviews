@@ -84,4 +84,4 @@ typings/
 .dynamodb/
 
 # Unnecessary Mac files
-.ds_store/
+.DS_Store/
