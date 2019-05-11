@@ -6,12 +6,16 @@ INSERT INTO Movies (title, posterURL)
           ("Apocalypse Now", "https://m.media-amazon.com/images/M/MV5BZTNkZmU0ZWQtZjQzMy00YTNmLWFmN2MtZGNkMmU1OThmMGYwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_CR0,0,652,1000_AL_.jpg"),
           ("The Sixth Sense", "https://m.media-amazon.com/images/M/MV5BMWM4NTFhYjctNzUyNi00NGMwLTk3NTYtMDIyNTZmMzRlYmQyXkEyXkFqcGdeQXVyMTAwMzUyOTc@._V1_.jpg");
 
-INSERT INTO Reviews (text, spoiler, MovieId)
+INSERT INTO Reviews (text, spoiler, MovieId, UserId)
   VALUES  ("The Butler did it", false, 2),
           ("Bruce Willis is already dead", true, 5),
           ("The bad guy wins", true, 4),
           ("People get eaten by dinosaurs, what's not to like?", false, 3);
 
+INSERT INTO Users (name, email, password)
+  VALUES  ("Ted", "thisisanemail@yahoo.com", "password23"),
+          ("Ralph", "ihaveanemail@gmail.com", "muhpassword"),
+          ("Lucy", "myemailiscool@aol.com", "passworded");
 -- Need to set default value of createdAt and updatedAt to CURRENT_TIMESTAMP in workbench to add data this way --
 -- Navigate to movies_db
   -- then Tables
