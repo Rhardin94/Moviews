@@ -1,0 +1,6 @@
+{{#each Movies}}
+<section id='movies' class='movie-wrap'>
+  <h1> Choose a movie to look at reviews. <h1>
+      <form action='/reviews/{{id}}'> <input type='submit' src='{{posterURL}}' alt='{{title}}' Width='48' height='48'>
+      </form>
+      {{/each}}

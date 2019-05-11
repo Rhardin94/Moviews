@@ -1,0 +1,22 @@
+<section class='container'>
+    <div class='form-wrap'>
+        <h1> Please enter your email address </h1>
+        <p> Your email will be used for login purposes only </p>
+        {{#each errors}}
+        <div class='error'>
+            <p>{{text}}</p>
+        </div>
+        {{/each}}
+
+        <form action='/user/add' method='POST'>
+            <div class='input-group'>
+                <label for='title'>Name</label>
+                <input type='text' name='user-name' class='input-box' placeholder='eg. Jimmy' maxlength='100'
+                    value='{{user}}'>
+            </div>
+            <div class='input-group'>
+                <label for='title'>Email address</label>
+                <input type='text' name='email-address' class= 'input-box' placeholder='eg. superfan@gmail.com'
+                    maxlength='100' value='{{email}}'>
+            </div>
+        </form>

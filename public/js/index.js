@@ -3,9 +3,7 @@ $(document).ready(function() {
   let textInput = $("#review-text");
   let spoilerInput = $("#review-spoiler");
   let movieIdInput = $("#review-movienum");
-
   let reviewList = $(".reviews");
-
   let reviewContainer = $(".review-container");
 
 //adding event listeners to the form to create a new review

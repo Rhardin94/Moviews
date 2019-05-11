@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="card mt-4">
+        <div class="card-body">
+          <div class="movie-menu">
+
+            <section class=“container”>
+              <div class=“form-wrap>
+                <h1> Write your review! </h1>
+                <p> Remember to check whether or not it spoils the movie. </p>
+                {{#each errors}}
+                <div class=“error”>
+                  <p>{{text}}</p>
+                </div>
+                {{/each}}
+
+                <form action='/reviews/add' method='POST'>
+                  <div class='input-group'>
+                    <label for='title'>Review text</label>
+                    <input type='text' name='title' class=“input-box” placeholder='eg. A miraculous fuckup'
+                      maxlength=“100” value='{{review}}'>
+                  </div>
+                  <select class='input-group'>
+                    {{#select MovieId}}
+                    <label for='movie'>Which movie</label>
+                    <option value='1'>Avengers: Infinity War</option>
+                    <option value='2'>Clue</option>
+                    <option value='3'>Jurassic Park</option>
+                    <option value='4'>Apocalypse Now</option>
+                    <option value='5'>The Sixth Sense</option>
+                    {{/select}}
+                  </select>
+                  <div class='input-group'>
+                    <label for='spoiler'> Check if spoiler</label>
+                    <input type='checkbox' name='spoiler' value='{{spoiler}}'><br>
+                  </div>
+                </form>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
