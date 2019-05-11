@@ -4,7 +4,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1, 50];
+        len: [1, 50]
       }
     },
     email: {
@@ -19,14 +19,14 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
       validate: {
         len: [1, 20]
-      };
+      }
     },
     last_login: {
       type: DataTypes.DATE
     },
     status: {
-      type: DataTypes.ENUM("active, inactive"),
-      defaultValue: active
+      type: DataTypes.ENUM("active", "inactive"),
+      defaultValue: "active"
     }
   });
   User.associate = function (models) {
@@ -34,8 +34,5 @@ module.exports = function (sequelize, DataTypes) {
       onDelete: "cascade"
     });
   };
-  User.associate = function(models) {
-    User.hasMany(models.Movie);
-  }
   return User;
 }
