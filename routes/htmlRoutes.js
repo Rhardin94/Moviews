@@ -2,7 +2,7 @@ var models = require("../models");
 
 module.exports = function(app) {
   // Load index page
-  app.get("/movies", (req, res) => {
+  app.get("/", (req, res) => {
     models.Movie.findAll({}).then((results) => {
       res.render("index", {
         msg: "Welcome!",
@@ -11,7 +11,7 @@ module.exports = function(app) {
     });
   });
   // Load example page and pass in an example by id
-  app.get("/movie/:id", (req, res) => {
+  app.get("/movies/:id", isLoggedIn, (req, res) => {
     models.Movie.findOne({ where: { id: req.params.id } }).then((results) => {
       res.render("movies", {
         movie: results
@@ -33,6 +33,7 @@ module.exports = function(app) {
       res.redirect("/");
     })
   });
+  //Function that requires user to login before moving past homepage
   function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
       return next();

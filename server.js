@@ -19,11 +19,11 @@ app.use(passport.session());
 // Handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-//Importing passport strategies
-require("./config/passport/passport")(passport, models.user);
 // Routes
+require("./config/passport/passport")(passport, models.User);
 require("./routes/apiRoutes")(app, passport);
 require("./routes/htmlRoutes")(app);
+//Importing passport strategies
 //require("./routes/auth")(app, passport);
 let syncOptions = { force: false };
 // If running a test, set syncOptions.force to true

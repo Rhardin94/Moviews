@@ -1,6 +1,11 @@
 {{#each Movies}}
-<section id='movies' class='movie-wrap'>
-  <h1> Choose a movie to look at reviews. <h1>
-      <form action='/reviews/{{id}}'> <input type='submit' src='{{posterURL}}' alt='{{title}}' Width='48' height='48'>
-      </form>
-      {{/each}}
+<div class="card">
+  <img class="card-img-top" action="/reviews/{{id}}" src="{{results.posterURL}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{title}}</h5>
+  </div>
+  <div class="card-footer">
+    <small class="text-muted"></small>
+  </div>
+</div>
+{{/each}}

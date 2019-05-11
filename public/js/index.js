@@ -59,7 +59,7 @@ function upsertReview(reviewData) {
 //      </div>
 // }
 
-//Function for retrieving authors and get them ready to be rendered to the page
+//Function for retrieving reviews and get them ready to be rendered to the page
 function getReviews() {
   $.get("/api/reviews", function(data) {
     let divsToAdd = [];

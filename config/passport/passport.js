@@ -23,11 +23,11 @@ module.exports = function(passport, user) {
         } else {
           let userPassword = generateHash(password);
           let data = {
+            name: req.body.name,
             email: email,
-            password: userPassword,
-            name: req.body.name
+            password: userPassword
           };
-          User.create(data).then(function (newUser, created) {
+          User.create(data).then(function(newUser, created) {
             if (!newUser) {
               return done(null, false);
             }
@@ -43,8 +43,7 @@ module.exports = function(passport, user) {
       passwordField: "password",
       passReqToCallback: true
     },
-    function(req, email, password, done) {
-      let User = user;
+    function(req, email, password, done) {  
       let isValidPassword = function(userpass, password) {
         return bCrypt.compareSync(password, userpass);
       }

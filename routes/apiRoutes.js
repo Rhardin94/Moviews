@@ -13,7 +13,7 @@ module.exports = function(app, passport) {
   });
   //Get all reviews from selected movie
   app.get("api/reviews/:id", (req, res) => {
-    models.Reviews.findAll({
+    models.Review.findAll({
       where: {
         MovieId: req.params.id
       }
@@ -23,7 +23,7 @@ module.exports = function(app, passport) {
   });
   //Get all reviews from the user
   app.get("/api/reviews/:id", (req, res) => {
-    models.Reviews.findAll({
+    models.Review.findAll({
       where: {
         UserId: req.params.id
       }
@@ -39,17 +39,23 @@ module.exports = function(app, passport) {
   });
   // Delete a review by id
   app.delete("/api/reviews/:id", (req, res) => {
-    models.Example.destroy({ where: { id: req.params.id } }).then((results) => {
+    models.Review.destroy({ where: { id: req.params.id } }).then((results) => {
       res.json(results);
     });
   });
   //Passport routes
-  app.post("/signup", passport.authenticate("local-signup", {
-    successRedirect: "/dashboard",
+  app.post("/signup", function(req, res, next){
+    console.log(req.body);
+    next();
+  }, passport.authenticate("local-signup", {
+    successRedirect: "/",
     failureRedirect: "/signup"
-  }))
-  app.post("/signin", passport.authenticate("local-signin", {
-    successRedirect: "/dashboard",
+  }));
+  app.post("/signin", function(req, res, next){
+    console.log(req.body);
+    next();
+  }, passport.authenticate("local-signin", {
+    successRedirect: "/",
     failureRedirect: "/signin"
   }));
 };
