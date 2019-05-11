@@ -17,19 +17,14 @@ app.use(session({secret: "keyboard cat", resave: true, saveUninitialized: true})
 app.use(passport.initialize());
 app.use(passport.session()); 
 // Handlebars
-app.engine(
-  "handlebars",
-  exphbs({
-    defaultLayout: "main"
-  })
-);
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 //Importing passport strategies
 require("./config/passport/passport")(passport, models.user);
 // Routes
-//require("./routes/apiRoutes")(app);
-//require("./routes/htmlRoutes")(app);
-require("./routes/auth")(app, passport);
+require("./routes/apiRoutes")(app, passport);
+require("./routes/htmlRoutes")(app);
+//require("./routes/auth")(app, passport);
 let syncOptions = { force: false };
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`

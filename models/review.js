@@ -4,6 +4,10 @@ module.exports = function (sequelize, DataTypes) {
     spoiler: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
     }
   });
   Review.associate = function(models) {

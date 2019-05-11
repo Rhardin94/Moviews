@@ -4,7 +4,7 @@
 //firebase.intializeApp(firebaseConfig);
 //Required tables/sequelize models
 const models = require("../models");
-module.exports = function(app) {
+module.exports = function(app, passport) {
   // Get all examples
   app.get("/api/movies", (req, res) => {
     models.Movie.findAll({}).then((results) => {
@@ -31,28 +31,6 @@ module.exports = function(app) {
       res.json(results);
     });
   });
-  /*Create a new user
-  app.post("/api/create", (req, res) => {
-    let userName = req.body.name;
-    let userPass = req.body.pass;
-    let userEmail = req.body.email;
-    firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).catch((error) => {
-      let errorCode = error.code;
-      let errorMessage = error.message;
-      console.log(errorCode + "\n" + errorMessage);
-    });
-  });
-  Login existing user
-  app.post("/api/login", (req, res) => {
-    let userName = req.body.name;
-    let userPass = req.body.pass;
-    let userEmail = req.body.email;
-    firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch((error) => {
-      let errorCode = error.code;
-      let errorMessage = error.message;
-      console.log(errorCode + "\n" + errorMessage);
-    });
-  });*/
   // Create a new review
   app.post("/api/reviews", (req, res) => {
     models.Review.create(req.body).then((results) => {
@@ -65,4 +43,13 @@ module.exports = function(app) {
       res.json(results);
     });
   });
+  //Passport routes
+  app.post("/signup", passport.authenticate("local-signup", {
+    successRedirect: "/dashboard",
+    failureRedirect: "/signup"
+  }))
+  app.post("/signin", passport.authenticate("local-signin", {
+    successRedirect: "/dashboard",
+    failureRedirect: "/signin"
+  }));
 };

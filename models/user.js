@@ -27,6 +27,10 @@ module.exports = function (sequelize, DataTypes) {
     status: {
       type: DataTypes.ENUM("active", "inactive"),
       defaultValue: "active"
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
     }
   });
   User.associate = function (models) {
