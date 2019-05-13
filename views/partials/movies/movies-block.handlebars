@@ -8,14 +8,15 @@
       </div>
     </div>
     <div class="card-deck">
-      <div class="card">
-        <img class="card-img-top" src="{{posterURL}}" alt="{{title}}" value="{{MovieId}}">
+      <div class="card" id="movie-clickable">
+        <img class="card-img-top" src="{{posterURL}}" alt="{{title}}" value="{{id}}"">
+        <input display="none" class= "this-movie" value= "{{id}}"></input>
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
           <p class="card-text">{{title}}</p>
         </div>
         <div class="card-footer">
-          <small class="text-muted">{{MovieId}}</small>
+          <small class="text-muted">{{id}}</small>
         </div>
       </div>
     </div>

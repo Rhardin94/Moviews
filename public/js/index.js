@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
   const posterContainer = $(".poster-container");
   const reviewContainer = $(".review-container");
@@ -30,6 +31,10 @@ $(document).ready(function() {
 
   $(document).on("load", getPosters);
   $(document).on("load", getReviews);
+  $("#movie-clickable").on("click", function(event){
+    console.log("movie clicked");
+    getReviews();
+  })
 
   let posters = [];
   let reviews = [];
@@ -63,13 +68,19 @@ $(document).ready(function() {
     });
   }
 
+let MovieId = $(".this-movie").val();
+
   function getReviews() {
-    $.get("/api/reviews/:id", function(data) {
-      reviews = data;
+    $.ajax
+    ({
+    method: "GET",
+    URL: "/api/reviews/" + MovieId,
+    }).then (function(data) {
+      console.log(MovieId);
       console.log(data);
       initializeReviewRows();
     });
-  }
+  };
 
   //This function constructs a poster card
   function displayPosters(poster) {
