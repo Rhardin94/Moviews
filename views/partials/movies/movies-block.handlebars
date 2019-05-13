@@ -1,11 +1,25 @@
-{{#each Movies}}
-<div class="card">
-  <img class="card-img-top" action="/reviews/{{id}}" src="{{results.posterURL}}" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">{{title}}</h5>
+{{#each movies}}
+
+<button method="get" action="" class="addreview-timer section-padding poster-container">
+  <div class="row text-center">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="heading-count">
+        <h2 class="wow fadeInDown" data-wow-delay="0.2s">Movies Selection</h2>
+      </div>
+    </div>
+    <div class="card-deck">
+      <div class="card">
+        <img class="card-img-top" src="{{posterURL}}" alt="{{title}}" value="{{MovieId}}">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">{{title}}</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">{{MovieId}}</small>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="card-footer">
-    <small class="text-muted"></small>
-  </div>
-</div>
+</button>
 {{/each}}
+

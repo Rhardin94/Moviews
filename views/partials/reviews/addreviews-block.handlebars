@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="row">
     <div class="col-8 offset-2">
@@ -15,26 +16,17 @@
                 </div>
                 {{/each}}
 
-                <form action='/reviews/add' method='POST'>
+                <form class='new-review'>
                   <div class='input-group'>
                     <label for='title'>Review text</label>
-                    <input type='text' name='title' class=“input-box” placeholder='eg. A miraculous fuckup'
-                      maxlength=“100” value='{{review}}'>
+                    <input type='text' name='title' class=“input-lg form-control” placeholder='eg. A miraculous fuckup'
+                      maxlength=“1000” value='{{review}}'>
                   </div>
-                  <select class='input-group'>
-                    {{#select MovieId}}
-                    <label for='movie'>Which movie</label>
-                    <option value='1'>Avengers: Infinity War</option>
-                    <option value='2'>Clue</option>
-                    <option value='3'>Jurassic Park</option>
-                    <option value='4'>Apocalypse Now</option>
-                    <option value='5'>The Sixth Sense</option>
-                    {{/select}}
-                  </select>
-                  <div class='input-group'>
-                    <label for='spoiler'> Check if spoiler</label>
-                    <input type='checkbox' name='spoiler' value='{{spoiler}}'><br>
+                  <div class='form-check'>
+                    <input type='checkbox' name='form-check-input spoiler' value='{{spoiler}}' id='new-review-text'>
+                    <label class='form-check-label' for='spoiler' id='new-review-spoiled'> Check if spoiler</label>
                   </div>
+                  <button class="btn btn-danger">Submit your review</button>
                 </form>
               </div>
           </div>

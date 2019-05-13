@@ -1,4 +1,6 @@
-<table class="review" data-id="{{id}}" data-spoiler="{{spoiler}}">
+{{#each reviews}}
+<table class="review-container" data-id="{{id}}" data-spoiler="{{spoiler}}">
+
 	{{#if spoiler}}
 	<p>Not for you!</p>
 	{{else}}
@@ -19,3 +21,4 @@
 	{{/if}}
 
 </table>
+{{/each}}

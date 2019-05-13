@@ -1,4 +1,137 @@
 $(document).ready(function() {
+  const posterContainer = $(".poster-container");
+  const reviewContainer = $(".review-container");
+//   const newReviewInput = document.querySelector("#new-review");
+//   const newReviewText = document.querySelector("#new-review-text");
+//   const newReviewSpoiler = document.querySelector("#new-review-spoiled");
+ 
+  // function dataManager(input) {
+  //   input.preventDefault();
+  //   const { id } = this.dataset;
+
+  //   const data = {
+  //     text: newReviewText.val().trim(),
+  //     spoiler: newReviewSpoiler.checked,
+  //     MovieId: id,
+  //     UserId: id
+  //   };
+
+  //   axios
+  //     .post("/api/reviews", data)
+  //     .then(response => {
+  //       location.reload(response);
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // }
+
+  // Event listeners
+
+  $(document).on("load", getPosters);
+  $(document).on("load", getReviews);
+
+  let posters = [];
+  let reviews = [];
+  let rowsToAdd = [];
+  let cardsToAdd = [];
+
+  function initializePosterRows() {
+    rowsToAdd.empty();
+    posterContainer.empty();
+    for (var i = 0; i < movies.length; i++) {
+      cardsToAdd.push(displayPosters(posters[i]));
+    }
+    posterContainer.prepend(rowsToAdd);
+  }
+
+  function initializeReviewRows() {
+    rowsToAdd.empty();
+    reviewContainer.empty();
+    for (var i = 0; i < reviews.length; i++) {
+      rowsToAdd.push(createNewRow(reviews[i]));
+    }
+    reviewContainer.prepend(rowsToAdd);
+  }
+
+  //Grab posters from database and update view
+  function getPosters() {
+    $.get("/api/movies", function(data) {
+      posters = data.posterURL;
+      console.log(posters);
+      initializePosterRows();
+    });
+  }
+
+  function getReviews() {
+    $.get("/api/reviews/:id", function(data) {
+      reviews = data;
+      console.log(data);
+      initializeReviewRows();
+    });
+  }
+
+  //This function constructs a poster card
+  function displayPosters(poster) {
+    let newCard = $(
+      [
+        "<div class='card-deck'>",
+        "<div class='card'>",
+        "<img class='card-img-top' src=" + posterURL + ">",
+        "</div>"
+      ].join("")
+    );
+    newCard.data("poster", poster);
+    if (poster.complete) {
+      newCard.find("span").css("text-decoration", "line-through");
+    }
+    return newCard;
+  }
+
+  // This function constructs a review row
+  function createNewRow(review) {
+    let newInputRow = $(
+      [
+        "<li class='list-group-item todo-item'>",
+        "<span>",
+        review.text,
+        "</span>",
+        "<input type='text' class='edit' style='display: none;'>",
+        "<button class='delete btn btn-danger'>x</button>",
+        "<button class='complete btn btn-primary'>✓</button>",
+        "</li>"
+      ].join("")
+    );
+
+    newInputRow.data("review", review);
+    if (review.complete) {
+      newInputRow.find("span").css("text-decoration", "line-through");
+    }
+    return newInputRow;
+  }
+
+// newReviewInput.addEventListener("submit", dataManager);
+});
+
+// This function inserts a new review into our database and then updates the view
+/*  function insertReview(event) {
+    event.preventDefault();
+    let review = {
+      text: newReviewInput.val().trim(),
+      complete: false
+    };
+
+
+}); */
+
+/* 
+
+
+//-----
+
+
+
+$(document).ready(function() {
 
   let textInput = $("#review-text");
   let spoilerInput = $("#review-spoiler");
@@ -6,7 +139,87 @@ $(document).ready(function() {
   let reviewList = $(".reviews");
   let reviewContainer = $(".review-container");
 
-//adding event listeners to the form to create a new review
+
+//Variable to hold reviews (displayed, not added)
+let reviews;
+
+//The code below handles the case where we want to get reviews for a specific movie
+//Looks for a query param in the URL for MovieId
+
+let url = window.location.search;
+let MovieId;
+if (url.indexOf("?MovieId=") !==-1) {
+  MovieId= url.split("=")[1];
+  getReviews(MovieId);
+}
+
+//if no MovieId get all the reviews as usual
+else{
+  getReviews();
+}
+
+//Function grabs reviews from the database and updates the view
+function getReviews(movie) {
+  MovieId = movie || "";
+  if (MovieId) {
+    MovieId = "/?MovieId=" + MovieId;
+  } 
+$.get("/api/reviews" + MovieId, function(data) {
+  console.log("Reviews", data);
+  reviews = data;
+  if (!reviews || !reviews.length) {
+    displayEmpty(movie);
+  }
+  else {
+    initializeRows();
+  }
+});
+}
+
+//InitializeRows handles appending constructed review HTML inside blogContainer
+
+function initializeRows() {
+  reviewContainer.empty();
+  let reviewsToAdd = [];
+  for (var i = 0; i< reviews.length; i++) {
+    reviewsToAdd.push(createNewRow(reviews[i]));
+  }
+  reviewContainer.append(reviewsToAdd);
+}
+
+// Function constructs review HTML
+function createNewRow(review) {
+  let formattedDate=new Date(review.createdAt);
+  formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
+  let newReviewCard = $("<div>");
+  newReviewCard.addClass("card");
+  let newReviewCardHeading = $("<div>");
+  newReviewCardHeading.addClass("card-header");
+  let newReviewTitle = $("<h2>");
+  let newReviewDate = $("<small>");
+  let newReviewAuthor = $("<h5>");
+  newReviewAuthor.text(review.User.name);
+  
+  let newReviewCardBody = $("<div>");
+  newReviewCardBody.addClass("card-body");
+  let newReviewBody = $("<p>");
+  newReviewTitle.text(review.title + " ");
+  newReviewBody.text(review.body);
+  newReviewDate.text(formattedDate);
+  newReviewTitle.append(newReviewDate);
+  newReviewCardHeading.append(newReviewTitle);
+  newReviewCardHeading.append(newReviewAuthor);
+  newReviewCardBody.append(newReviewBody);
+  newReviewCard.append(newReviewCardHeading);
+  newReviewCard.append(newReviewCardBody);
+  newReviewCard.data("review", review);
+  return newReviewCard;
+}
+
+
+//-------
+
+//adding event listeners to the form to create a new review (adding, not displaying)
 //and the button to delete
 
 $(document).on("submit", "#review-form", handleReviewSubmit);
@@ -99,9 +312,9 @@ function handleDeleteButtonClick() {
   })
     .then(getReviews);
 }
-
+//-------
 });
-
+ */
 
 // // The API object contains methods for each kind of request we'll make
 // var API = {

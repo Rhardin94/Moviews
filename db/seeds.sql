@@ -1,4 +1,5 @@
 use movies_db;
+
 INSERT INTO movies (title, posterURL)
   VALUES  ("Avengers: Infinity War", "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SY1000_CR0,0,674,1000_AL_.jpg"),
           ("Clue", "https://m.media-amazon.com/images/M/MV5BM2VlNTE1ZmMtOTAyNS00ODYwLWFmY2MtZWEzOTE2YjE1NDE2XkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SY1000_CR0,0,658,1000_AL_.jpg"),

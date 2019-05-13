@@ -9,6 +9,9 @@ module.exports = function(app, passport) {
   app.get("/api/movies", (req, res) => {
     models.Movie.findAll({}).then((results) => {
       res.json(results);
+      res.render('index', {
+        Movies
+      })
     });
   });
   //Get all reviews from selected movie
@@ -32,7 +35,7 @@ module.exports = function(app, passport) {
     });
   });
   // Create a new review
-  app.post("/api/reviews", (req, res) => {
+  app.post("/api/reviews/add", (req, res) => {
     models.Review.create(req.body).then((results) => {
       res.json(results);
     });
