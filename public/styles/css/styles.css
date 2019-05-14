@@ -11,8 +11,7 @@ html {
 }
 
 body {
-  background: #fff;
-  font-size: 15px;
+  background: url('../img/slide1.jpeg') no-repeat center center fixed;  font-size: 15px;
   font-weight: 400;
   font-family: 'Lato', sans-serif;
   -webkit-box-sizing: border-box;
@@ -196,7 +195,10 @@ ul li, ol li {
   color: #fff;
 }
 
+
+
 .btn {
+  
   font-size: 14px;
   padding: 12px 20px;
   border-radius: 4px;
@@ -808,6 +810,22 @@ a.back-to-top:hover, a.back-to-top:focus {
   background: #E91E63;
 }
 
+@media (max-width: 768px) {
+  .btn {
+    padding:2px 4px;
+    font-size:80%;
+    line-height: 1;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .btn {
+    padding:4px 9px;
+    font-size:90%;
+    line-height: 1.2;
+  }
+}
+
 /* only small tablets */
 @media (min-width: 768px) and (max-width: 991px) {
   #nav-main li a.nav-link {
@@ -1149,4 +1167,6 @@ a.back-to-top:hover, a.back-to-top:focus {
 .card-img-top {
   width: 200px;
   height: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }

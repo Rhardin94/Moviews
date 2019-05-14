@@ -3,31 +3,21 @@ var models = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", (req, res) => {
+    // console.log(req.user.id);
     models.Movie.findAll({}).then(results => {
       res.render("home", {
         movies: results
       });
     });
   });
-  app.get("/api/reviews/:id", (req, res) => {
-    models.Review.findAll({
-      where: {
-        MovieId: req.params.id
-      }
-    }).then((results) => {
-      res.render("index", {
-        reviews: results
-      });
-    });
-  });
   //Passport routes
-  app.get("/dashboard", isLoggedIn, (req, res) => {
+  app.get("/dashboard", (req, res) => {
     res.render("dashboard");
   });
-  /*
-  app.get("/signup-block", (req, res) => {
-    res.render("signup-block");
+  app.get("/signup", (req, res) => {
+    res.render("signup");
   });
+  /*
   app.get("/signin-block", (req, res) => {
     res.render("signin-block");
   });
@@ -42,7 +32,7 @@ module.exports = function(app) {
     if (req.isAuthenticated()) {
       return next();
     }
-    res.redirect("/index");
+    res.redirect("/dashboard");
   }
   // Render 404 page for any unmatched routes
   app.get("*", (req, res) => {
