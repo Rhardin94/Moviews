@@ -58,8 +58,7 @@ $(document).ready(function() {
   }
 
 
-let MovieId = $(this).attr("data", "value");
-
+let MovieId = $(this).attr("value");
 /* API.postReview(review).then(function() {
   refreshReviews();
 });
@@ -146,7 +145,7 @@ let MovieId = $(this).attr("data", "value");
     ({
     method: "GET",
     URL: "/api/reviews/" + MovieId,
-    }).then (function(data) {
+    }).then(function(data) {
       console.log(MovieId);
       initializeReviewRows();
     });

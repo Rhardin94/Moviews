@@ -4,7 +4,7 @@ module.exports = function(app) {
   // Load index page
   app.get("/", (req, res) => {
     models.Movie.findAll({}).then(results => {
-      res.render("index", {
+      res.render("home", {
         movies: results
       });
     });
