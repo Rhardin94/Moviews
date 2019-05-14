@@ -7,13 +7,20 @@ const models = require("../models");
 module.exports = function(app, passport) {
   // Get all movies
   app.get("/api/movies", (req, res) => {
-    models.Movie.findAll({}).then((results) => {
+    models.Movie.findAll({include:[models.Review]}).then((results) => {
       res.json(results);
-      res.render('index', {
-        Movies
-      })
     });
   });
+  //Get individual movies based on id
+  app.get("/api/movies/:id", (req, res) => {
+    models.Movie.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then((result) => {
+      res.json(result);
+    })
+  })
   //Get all reviews
   app.get("/api/reviews", (req, res) => {
     models.Review.findAll({}).then((result) => {
@@ -21,25 +28,20 @@ module.exports = function(app, passport) {
     });
   });
   //Get all reviews from selected movie
-  app.get("api/reviews/:id", (req, res) => {
+  app.get("/api/reviews/:id", (req, res) => {
     models.Review.findAll({
       where: {
         MovieId: req.params.id
       }
     }).then((results) => {
       res.json(results);
-    });
+    }); 
   });
-  /*Get all reviews from the user
-  app.get("/api/reviews/:id", (req, res) => {
-    models.Review.findAll({
-      where: {
-        UserId: req.params.id
-      }
-    }).then((results) => {
-      res.json(results);
-    });
-  });*/
+  // app.get("/api/users", (req, res) => {
+  //   models.User.findAll({}).then((result) => {
+  //     res.json(result);
+  //   });
+  // });
   // Create a new review
   app.post("/api/reviews/add", (req, res) => {
     models.Review.create(req.body).then((results) => {
@@ -57,14 +59,14 @@ module.exports = function(app, passport) {
     console.log(req.body);
     next();
   }, passport.authenticate("local-signup", {
-    successRedirect: "/",
+    successRedirect: "/dashboard",
     failureRedirect: "/signup"
   }));
   app.post("/signin", function(req, res, next){
     console.log(req.body);
     next();
   }, passport.authenticate("local-signin", {
-    successRedirect: "/",
+    successRedirect: "/dashboard",
     failureRedirect: "/signin"
   }));
 };

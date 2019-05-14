@@ -1,6 +1,3 @@
-$(document).ready(function() {
-  const posterContainer = $(".poster-container");
-  const reviewContainer = $(".review-container");
 //   const newReviewInput = document.querySelector("#new-review");
 //   const newReviewText = document.querySelector("#new-review-text");
 //   const newReviewSpoiler = document.querySelector("#new-review-spoiled");
@@ -25,13 +22,17 @@ $(document).ready(function() {
   //     });
   // }
 
+$(document).ready(function() {
+  const posterContainer = $(".poster-container");
+  const reviewContainer = $(".review-container");
+
   // Event listeners
 
-  $(document).on("load", getPosters);
-  $(document).on("load", getReviews);
-  $("#movie-clickable").on("click", function(event){
+  $(".poster-container").on("click", function(event){
     console.log("movie clicked");
     getReviews();
+    event.stopPropagation();
+       return false;
   })
 
   let posters = [];
@@ -39,17 +40,16 @@ $(document).ready(function() {
   let rowsToAdd = [];
   let cardsToAdd = [];
 
-  function initializePosterRows() {
+/*   function initializePosterRows() {
     rowsToAdd.empty();
     posterContainer.empty();
     for (var i = 0; i < movies.length; i++) {
       cardsToAdd.push(displayPosters(posters[i]));
     }
     posterContainer.prepend(rowsToAdd);
-  }
+  } */
 
   function initializeReviewRows() {
-    rowsToAdd.empty();
     reviewContainer.empty();
     for (var i = 0; i < reviews.length; i++) {
       rowsToAdd.push(createNewRow(reviews[i]));
@@ -57,28 +57,100 @@ $(document).ready(function() {
     reviewContainer.prepend(rowsToAdd);
   }
 
-  //Grab posters from database and update view
-  function getPosters() {
-    $.get("/api/movies", function(data) {
-      posters = data.posterURL;
-      console.log(posters);
-      initializePosterRows();
-    });
-  }
 
-let MovieId = $(".poster-container").val();
+let MovieId = ($(this).val());
 
-  function getReviews() {
+/* API.postReview(review).then(function() {
+  refreshReviews();
+});
+ */
+// handleFormSubmit is called whenever we submit a new review
+// Save the new review to the db and refresh the list
+// const handleFormSubmit = function(event) {
+// event.preventDefault();
+
+// const review = {
+// text: $(".input-lg").val().trim(),
+
+// };
+
+//   if (!(example.text && example.description)) {
+//     alert("You must enter an example text and description!");
+//     return;
+//   }
+
+
+//refreshExamples gets new examples from the db and repopulates the list
+// /* const refreshReviews = function() {
+//   API.getReviews().then(function(data) {
+//     const review = data.map(function(review) {
+//     const a = $("<a>")
+//   .text(example.text)
+//   .attr("href", "/example/" + example.id);
+
+//     const li = $("<li>")
+//     .attr({
+//     class: "list-group-item",
+//     "data-id": example.id
+//     })
+//       .append($a);
+
+//     var button = $("<button>")
+//       .addClass("btn btn-danger float-right leave-reviews")
+//       .text("ｘ");
+
+//       $li.append(button);
+
+//       return li;
+//       });
+// /* 
+//       $exampleList.empty();
+//       $exampleList.append($examples); */
+//       });
+//     };
+// var API = {
+//     postReview: function(review) {
+//       return $.ajax({
+//     headers: {
+//   "Content-Type": "application/json"
+//   },
+//     type: "POST",
+//     url: "api/reviews/add",
+//     data: JSON.stringify(review)
+// });
+// },
+
+//     getReviews: function() {
+//       return $.ajax({
+//       url: "api/reviews" + MovieId,
+//       type: "GET"
+//     }).then(function(data) {
+//       console.log(MovieId);
+//       console.log(data);
+//       initializeReviewRows();
+// })
+// }
+// }; 
+
+//  function postReview() {
+//     $.ajax 
+//     ({
+//       method: "POST",
+//       URL: "/api/reviews/add"
+//     })
+//   } 
+
+ function getReviews() {
+   console.log('this happened')
     $.ajax
     ({
     method: "GET",
     URL: "/api/reviews/" + MovieId,
     }).then (function(data) {
       console.log(MovieId);
-      console.log(data);
       initializeReviewRows();
     });
-  };
+  }; 
 
   //This function constructs a poster card
   function displayPosters(poster) {
@@ -119,8 +191,9 @@ let MovieId = $(".poster-container").val();
     return newInputRow;
   }
 
+
 // newReviewInput.addEventListener("submit", dataManager);
-});
+// });
 
 // This function inserts a new review into our database and then updates the view
 /*  function insertReview(event) {
@@ -135,14 +208,9 @@ let MovieId = $(".poster-container").val();
 
 
 
------
-
-// TK - a Handlebars Helper function to aid in hiding spoilers. 
-  Handlebars.registerHelper("Spoilery")
 
 
 
-  
 /* 
 
 $(document).ready(function() {
@@ -356,49 +424,8 @@ function handleDeleteButtonClick() {
 //   }
 // };
 
-// // refreshExamples gets new examples from the db and repopulates the list
-// var refreshExamples = function() {
-//   API.getExamples().then(function(data) {
-//     var $examples = data.map(function(example) {
-//       var $a = $("<a>")
-//         .text(example.text)
-//         .attr("href", "/example/" + example.id);
 
-//       var $li = $("<li>")
-//         .attr({
-//           class: "list-group-item",
-//           "data-id": example.id
-//         })
-//         .append($a);
 
-//       var $button = $("<button>")
-//         .addClass("btn btn-danger float-right delete")
-//         .text("ｘ");
-
-//       $li.append($button);
-
-//       return $li;
-//     });
-
-//     $exampleList.empty();
-//     $exampleList.append($examples);
-//   });
-// };
-
-// // handleFormSubmit is called whenever we submit a new example
-// // Save the new example to the db and refresh the list
-// var handleFormSubmit = function(event) {
-//   event.preventDefault();
-
-//   var example = {
-//     text: $exampleText.val().trim(),
-//     description: $exampleDescription.val().trim()
-//   };
-
-//   if (!(example.text && example.description)) {
-//     alert("You must enter an example text and description!");
-//     return;
-//   }
 
 //   API.saveExample(example).then(function() {
 //     refreshExamples();
@@ -423,3 +450,4 @@ function handleDeleteButtonClick() {
 // // Add event listeners to the submit and delete buttons
 // $submitBtn.on("click", handleFormSubmit);
 // $exampleList.on("click", ".delete", handleDeleteBtnClick);
+});

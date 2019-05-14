@@ -5,30 +5,33 @@ module.exports = function(app) {
   app.get("/", (req, res) => {
     models.Movie.findAll({}).then(results => {
       res.render("index", {
-        msg: "Welcome!",
         movies: results
       });
     });
   });
-
-  app.get("/movies/:id", isLoggedIn, (req, res) => {
-    models.Movie.findOne({ where: { id: req.params.id } }).then(results => {
-      res.render("movies", {
-        movie: results
+  app.get("/api/reviews/:id", (req, res) => {
+    models.Review.findAll({
+      where: {
+        MovieId: req.params.id
+      }
+    }).then((results) => {
+      res.render("index", {
+        reviews: results
       });
     });
   });
-
   //Passport routes
   app.get("/dashboard", isLoggedIn, (req, res) => {
     res.render("dashboard");
   });
+  /*
   app.get("/signup-block", (req, res) => {
     res.render("signup-block");
   });
   app.get("/signin-block", (req, res) => {
     res.render("signin-block");
   });
+  */
   app.get("/logout", (req, res) => {
     req.session.destroy(function(err) {
       res.redirect("/");
@@ -39,7 +42,7 @@ module.exports = function(app) {
     if (req.isAuthenticated()) {
       return next();
     }
-    res.redirect("/signin-block");
+    res.redirect("/index");
   }
   // Render 404 page for any unmatched routes
   app.get("*", (req, res) => {

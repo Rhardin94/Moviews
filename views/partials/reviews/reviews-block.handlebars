@@ -1,9 +1,9 @@
 {{#each reviews}}
 <table class="review-container" data-id="{{id}}" data-spoiler="{{spoiler}}">
 
-	{{#if spoiler}}
+	{{!-- {{#if spoiler}}
 	<p>Not for you!</p>
-	{{else}}
+	{{else}} --}}
 	<thead>
 		<tr>
 			<th>Review</th>
@@ -18,7 +18,7 @@
 			<td>{{MovieId}}</td>
 		</tr>
 	</tbody>
-	{{/if}}
+	{{!-- {{/if}} --}}
 
 </table>
 {{/each}}

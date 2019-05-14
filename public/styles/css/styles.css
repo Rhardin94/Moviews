@@ -6,6 +6,10 @@ html {
   overflow-x: hidden;
 }
 
+.buryIt{
+  display: none !important;
+}
+
 body {
   background: #fff;
   font-size: 15px;
@@ -91,7 +95,7 @@ ul li, ol li {
 }
 
 .section-title-header p {
-  text: center;
+  text-align: center;
   font-weight: 400;
   line-height: 26px;
   padding-bottom: 36px;
@@ -140,7 +144,7 @@ ul li, ol li {
 
 .section-subcontent {
   font-size: 16px;
-  text: center;
+  text-align: center;
   font-weight: 400;
   line-height: 26px;
   padding-bottom: 36px;
@@ -177,7 +181,7 @@ ul li, ol li {
 .inner-title {
   font-size: 24px;
   font-weight: 700;
-  text-tranform: capitalize;
+  text-transform: capitalize;
 }
 
 .page-tagline {
@@ -958,27 +962,6 @@ a.back-to-top:hover, a.back-to-top:focus {
   text-transform: uppercase;
 }
 
-/* Sponsors Area */
-#sponsors {
-  background: #f3f4f3;
-}
-
-#sponsors .spnsors-logo {
-  text-align: center;
-  border-radius: 4px;
-  padding: 50px;
-  margin-bottom: 30px;
-  display: inline-block;
-  border: 1px solid #ddd;
-  background: #fff;
-  -webkit-transition: all 300ms ease-in-out;
-  transition: all 300ms ease-in-out;
-}
-
-#sponsors .spnsors-logo:hover {
-  border-color: transparent;
-  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
-}
 /* reviews Item */
 .reviews {
   background: #fff;
@@ -1161,4 +1144,9 @@ a.back-to-top:hover, a.back-to-top:focus {
   background: hsla(0,0%,74.5%,.13);
   color: transparent;
   cursor: pointer;
+}
+
+.card-img-top {
+  width: 200px;
+  height: 300px;
 }

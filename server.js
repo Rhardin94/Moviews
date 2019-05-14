@@ -9,6 +9,7 @@ const exphbs = require("express-handlebars");
 const models = require("./models");
 const app = express();
 const PORT = process.env.PORT || 4500;
+
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -33,6 +34,24 @@ let handlebars = require("express-handlebars").create({
   defaultLayout: 'main',
   extname: '.handlebars'
 });
+
+// HELPERS section.
+const hbs = exphbs.create({
+  helpers: {
+
+
+    Spoilery: function() {
+      if (Review.spoiler) {
+        return safeString("<span class='spoiler'>" + options.fn(this) + "</span")
+      } else {
+        return options.fn(this)
+      }
+    },
+
+
+  }
+});
+
 
 
 app.engine('handlebars', handlebars.engine);

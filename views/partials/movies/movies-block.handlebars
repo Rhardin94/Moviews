@@ -1,6 +1,6 @@
 {{#each movies}}
 
-<button method="get" action="" class="addreview-timer section-padding poster-container" value= "{{id}}">
+<button class="poster-container" value= "{{id}}">
   <div class="row text-center">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="heading-count">
@@ -8,15 +8,11 @@
       </div>
     </div>
     <div class="card-deck">
-      <div class="card" id="movie-clickable">
-        <img class="card-img-top" src="{{posterURL}}" alt="{{title}}">
-        <input display="none" class= "this-movie" value= "{{id}}"></input>
+      <div class="card">
+        <div><img class="card-img-top" src="{{posterURL}}" alt="{{title}}"></div>
+        <input display="none" class= "buryIt this-movie" value= "{{id}}"></input>
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">{{title}}</p>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">{{id}}</small>
+          <h5 class="card-title">{{title}}</h5>
         </div>
       </div>
     </div>
