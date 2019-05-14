@@ -1,11 +1,9 @@
-
 $(document).ready(function() {
   const posterContainer = $(".poster-container");
   const reviewContainer = $(".review-container");
 //   const newReviewInput = document.querySelector("#new-review");
 //   const newReviewText = document.querySelector("#new-review-text");
 //   const newReviewSpoiler = document.querySelector("#new-review-spoiled");
- 
   // function dataManager(input) {
   //   input.preventDefault();
   //   const { id } = this.dataset;
@@ -68,7 +66,7 @@ $(document).ready(function() {
     });
   }
 
-let MovieId = $(".this-movie").val();
+let MovieId = $(".poster-container").val();
 
   function getReviews() {
     $.ajax
@@ -135,12 +133,17 @@ let MovieId = $(".this-movie").val();
 
 }); */
 
+
+
+-----
+
+// TK - a Handlebars Helper function to aid in hiding spoilers. 
+  Handlebars.registerHelper("Spoilery")
+
+
+
+  
 /* 
-
-
-//-----
-
-
 
 $(document).ready(function() {
 

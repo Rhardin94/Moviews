@@ -1154,3 +1154,11 @@ a.back-to-top:hover, a.back-to-top:focus {
   color: #fff;
   border-color: #fff;
 }
+
+.spoiler {
+  border: 1px dotted #7f7f7f;
+  border-top: none;
+  background: hsla(0,0%,74.5%,.13);
+  color: transparent;
+  cursor: pointer;
+}

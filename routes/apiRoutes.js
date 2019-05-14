@@ -5,13 +5,19 @@
 //Required tables/sequelize models
 const models = require("../models");
 module.exports = function(app, passport) {
-  // Get all examples
+  // Get all movies
   app.get("/api/movies", (req, res) => {
     models.Movie.findAll({}).then((results) => {
       res.json(results);
       res.render('index', {
         Movies
       })
+    });
+  });
+  //Get all reviews
+  app.get("/api/reviews", (req, res) => {
+    models.Review.findAll({}).then((result) => {
+      res.json(result);
     });
   });
   //Get all reviews from selected movie
@@ -24,7 +30,7 @@ module.exports = function(app, passport) {
       res.json(results);
     });
   });
-  //Get all reviews from the user
+  /*Get all reviews from the user
   app.get("/api/reviews/:id", (req, res) => {
     models.Review.findAll({
       where: {
@@ -33,7 +39,7 @@ module.exports = function(app, passport) {
     }).then((results) => {
       res.json(results);
     });
-  });
+  });*/
   // Create a new review
   app.post("/api/reviews/add", (req, res) => {
     models.Review.create(req.body).then((results) => {
