@@ -58,7 +58,7 @@ $(document).ready(function() {
   }
 
 
-let MovieId = ($(this).val());
+let MovieId = $(this).attr("data", "value");
 
 /* API.postReview(review).then(function() {
   refreshReviews();
