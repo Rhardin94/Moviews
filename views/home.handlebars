@@ -1,0 +1,42 @@
+<!--Bootstrap container, contains all the movie cards-->
+<!--Cards are split by 3 per row-->
+
+<div class="rounded container" style="height:auto; padding:auto; background-color:#232741; background-image: url(https://cdn.pixabay.com/photo/2015/12/09/17/12/popcorn-1085072_1280.jpg);">
+  <h1 style="padding: 10px; color: white; float:right; font: italic small-caps bold 40px cursive;">Moviews!</h1>
+  <a href="/logout"><button style="margin: 1em; font: italic small-caps bold 24px cursive;" class="btn btn-danger">Logout</button></a>
+  <button class="spoilers btn btn-warning">Toggle Spoilers</button>
+  <div style="margin:auto" class="row text-center">
+  {{#each movies}}
+    <div class="col-md-4 col-sm-4 col-xs-4">
+      <div class="card p-1">
+        <img class="card-img-top img-fluid" src="{{posterURL}}" alt="{{title}}">
+        <div class="card-body">
+          <h5 class="card-title" style="font: italic small-caps bold 24px cursive;">{{title}}</h5>
+          <a  class="btn text-center btn-danger reviews" style="font: italic small-caps bold 16px cursive;" value="{{id}}" title="{{title}}">Reviews</a>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+  </div>
+  <!--Modal-->
+  <div style= "font: italic small-caps bold 16px cursive" class="modal fade" id="review-modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 style="font: italic small-caps bold 24px cursive;" class="modal-title"></h5>
+            <button type="button" style="font: italic small-caps bold 16px cursive;" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-center">
+            <h4 id="review"></h4>
+          </div>
+          <div class="modal-footer">
+            <button type="button" style="font: italic small-caps bold 16px cursive;" class="btn btn-danger add">Leave a Review</button>
+            <a href="#top"><button type="button" class="btn btn-secondary exit" style="font: italic small-caps bold 16px cursive;" data-dismiss="modal">Close</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
