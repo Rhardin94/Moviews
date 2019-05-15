@@ -29,7 +29,7 @@ module.exports = function(app) {
     if (req.isAuthenticated()) {
       return next();
     }
-    res.redirect("/signin");
+    res.redirect("/signup");
   }
   // Render 404 page for any unmatched routes
   app.get("*", (req, res) => {
