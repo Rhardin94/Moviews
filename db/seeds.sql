@@ -13,10 +13,14 @@ INSERT INTO users (name, email, password)
           ("Lucy", "myemailiscool@aol.com", "passworded");
 
 INSERT INTO reviews (text, spoiler, MovieId, UserId)
-  VALUES  ("The Butler did it", false, 2, 1),
+  VALUES  ("The butler did it!", false, 2, 1),
+          ("Why'd they kill Sam Jackson?", true, 3, 2),
           ("Bruce Willis is already dead", true, 5, 1),
-          ("The bad guy wins", true, 4, 2),
-          ("People get eaten by dinosaurs, what's not to like?", false, 3, 3);
+          ("Haley Joel Osment sees dead people", false, 5, 1),
+          ("The bad guy wins", true, 1, 2),
+          ("A wild ride Marvel fans will never forget", false, 1, 1),
+          ("People get eaten by dinosaurs, what's not to like?", false, 3, 3),
+          ("It's actually based on Heart of Darkness", false, 4, 2);
 
 -- Need to set default value of createdAt and updatedAt to CURRENT_TIMESTAMP in workbench to add data this way --
 -- Navigate to movies_db

@@ -133,6 +133,7 @@ $(document).ready(function () {
       $(".modal-body").html(reviewForm);
   });
   //On-click to assign spoiler boolean to review via checkbox
+  // solution found here: "https://www.tutorialrepublic.com/faq/how-to-check-a-checkbox-is-checked-or-not-using-jquery.php"
   $(document).on("click", ".spoiler", function() {
     if ($(this).prop("checked") === true) {
       $(this).attr("contains-spoiler", true);

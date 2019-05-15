@@ -35,23 +35,6 @@ let handlebars = require("express-handlebars").create({
   extname: '.handlebars'
 });
 
-// HELPERS section.
-// const hbs = exphbs.create({
-//   helpers: {
-
-
-//     Spoilery: function() {
-//       if (Review.spoiler) {
-//         return safeString("<span class='spoiler'>" + options.fn(this) + "</span")
-//       } else {
-//         return options.fn(this)
-//       }
-//     },
-
-
-//   }
-// });
-
 
 
 app.engine('handlebars', handlebars.engine);
