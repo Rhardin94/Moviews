@@ -1,7 +1,8 @@
+/* eslint-disable no-undef */
 //Importing .env configuration for .env sensitive information
 require("dotenv").config();
 //Dependencies
-const path = require('path');
+const path = require("path");
 const passport = require("passport");
 const express = require("express");
 const session = require("express-session");
@@ -31,18 +32,18 @@ require("./routes/htmlRoutes")(app);
 let handlebars = require("express-handlebars").create({
   layoutsDir: path.join(__dirname, "views/layouts"),
   partialsDir: path.join(__dirname, "views/partials"),
-  defaultLayout: 'main',
-  extname: '.handlebars'
+  defaultLayout: "main",
+  extname: ".handlebars"
 });
 
 
 
-app.engine('handlebars', handlebars.engine);
-app.set('view engine', 'handlebars');
-app.set('views', path.join(__dirname, "views"));
+app.engine("handlebars", handlebars.engine);
+app.set("view engine", "handlebars");
+app.set("views", path.join(__dirname, "views"));
 
-app.get('/', function(req, res){
-  res.render('index');
+app.get("/", function(req, res){
+  res.render("index");
 });
 
 //Importing passport strategies
@@ -56,6 +57,7 @@ if (process.env.NODE_ENV === "test") {
 // Starting the server, syncing our models ------------------------------------/
 models.sequelize.sync(syncOptions).then(function() {
   app.listen(PORT, function() {
+    // eslint-disable-next-line no-console
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
       PORT,
@@ -63,6 +65,7 @@ models.sequelize.sync(syncOptions).then(function() {
     );
   });
 }).catch((err) => {
+  // eslint-disable-next-line no-console
   console.log(err, "Something went wrong with db update!");
 });
 module.exports = app;
