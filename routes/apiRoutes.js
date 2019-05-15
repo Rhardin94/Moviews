@@ -1,9 +1,13 @@
 //Required tables/sequelize models
+// eslint-disable-next-line no-undef
 const models = require("../models");
-module.exports = function(app, passport) {
+// eslint-disable-next-line no-undef
+module.exports = function (app, passport) {
   // Get all movies
   app.get("/api/movies", (req, res) => {
-    models.Movie.findAll({include:[models.Review]}).then((results) => {
+    models.Movie.findAll({
+      include: [models.Review]
+    }).then((results) => {
       res.json(results);
     });
   });
@@ -26,7 +30,7 @@ module.exports = function(app, passport) {
       }
     }).then((results) => {
       res.json(results);
-    }); 
+    });
   });
   //Get all reviews from selected movie
   app.get("/api/allreviews/:id", (req, res) => {
@@ -36,40 +40,41 @@ module.exports = function(app, passport) {
       }
     }).then((results) => {
       res.json(results);
-    }); 
+    });
   });
   // Create a new review
   app.post("/api/reviews/add", (req, res) => {
-    console.log(req.body.MovieId);
     if (req.user) {
-    models.Review.create({
-      text: req.body.text,
-      spoiler: req.body.spoiler,
-      MovieId: req.body.MovieId,
-      UserId: req.user.id
-    }).then((results) => {
-      res.json(results);
-    });
-  } else {
-    res.status(404).end();
-  }
+      models.Review.create({
+        text: req.body.text,
+        spoiler: req.body.spoiler,
+        MovieId: req.body.MovieId,
+        UserId: req.user.id
+      }).then((results) => {
+        res.json(results);
+      });
+    } else {
+      res.status(404).end();
+    }
   });
   // Delete a review by id
   app.delete("/api/reviews/:id", (req, res) => {
-    models.Review.destroy({ where: { id: req.params.id } }).then((results) => {
+    models.Review.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then((results) => {
       res.json(results);
     });
   });
   //Passport routes
-  app.post("/signup", function(req, res, next){
-    console.log(req.body);
+  app.post("/signup", function (req, res, next) {
     next();
   }, passport.authenticate("local-signup", {
     successRedirect: "/",
     failureRedirect: "/signup"
   }));
-  app.post("/signin", function(req, res, next){
-    console.log(req.body);
+  app.post("/signin", function (req, res, next) {
     next();
   }, passport.authenticate("local-signin", {
     successRedirect: "/",

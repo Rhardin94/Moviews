@@ -1,7 +1,9 @@
+/* eslint-disable no-undef */
 require("dotenv").config();
 module.exports = {
   development: {
     username: "root",
+    // eslint-disable-next-line no-undef
     password: process.env.DB_PASSWORD,
     database: "movies_db",
     host: "localhost",

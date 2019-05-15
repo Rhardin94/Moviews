@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 module.exports = function (sequelize, DataTypes) {
   let User = sequelize.define("User", {
     name: {
@@ -41,4 +42,4 @@ module.exports = function (sequelize, DataTypes) {
     });
   };
   return User;
-}
+};

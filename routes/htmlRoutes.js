@@ -1,5 +1,6 @@
+// eslint-disable-next-line no-undef
 var models = require("../models");
-
+// eslint-disable-next-line no-undef
 module.exports = function(app) {
   // Load index page
   app.get("/", isLoggedIn, (req, res) => {
@@ -23,6 +24,7 @@ module.exports = function(app) {
   });
   */
   app.get("/logout", (req, res) => {
+    // eslint-disable-next-line no-unused-vars
     req.session.destroy(function(err) {
       res.redirect("/");
     });

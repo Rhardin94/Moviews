@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 module.exports = function (sequelize, DataTypes) {
   let Review = sequelize.define("Review", {
     text: DataTypes.STRING,
@@ -27,4 +28,4 @@ module.exports = function (sequelize, DataTypes) {
     });
   };
   return Review;
-}
+};

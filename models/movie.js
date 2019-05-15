@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 module.exports = function(sequelize, DataTypes) {
   let Movie = sequelize.define("Movie", {
     title: DataTypes.STRING,
