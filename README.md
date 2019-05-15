@@ -40,6 +40,7 @@ The user may also leave reviews for their favorite movies
 And if they want to leave a spoiler-filled review, they may mark the spoiler checkbox to flag the review in the database
 
 ![leave review modal with spoiler flag on](assets/images/leave_spoiler.png)
+
 Once the user hits the submit review button, they are back to the main page with ability to do all of the above once more.
 ___
 When they are finished interacting with the site, they can logout via the logout button at the top of the page(they will not automatically logout until they close the browser).
@@ -47,7 +48,6 @@ When they are finished interacting with the site, they can logout via the logout
 ![logout button](assets/images/logout.png)
 
 ## Dependencies
-___
 * [Node.js](https://nodejs.org/en/)
 * [MySQL](https://www.mysql.com/)
 * [Express](https://www.npmjs.com/search?q=express)
