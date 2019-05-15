@@ -2,7 +2,7 @@ var models = require("../models");
 
 module.exports = function(app) {
   // Load index page
-  app.get("/", (req, res) => {
+  app.get("/", isLoggedIn, (req, res) => {
     // console.log(req.user.id);
     models.Movie.findAll({}).then(results => {
       res.render("home", {

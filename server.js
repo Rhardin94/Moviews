@@ -36,21 +36,21 @@ let handlebars = require("express-handlebars").create({
 });
 
 // HELPERS section.
-const hbs = exphbs.create({
-  helpers: {
+// const hbs = exphbs.create({
+//   helpers: {
 
 
-    Spoilery: function() {
-      if (Review.spoiler) {
-        return safeString("<span class='spoiler'>" + options.fn(this) + "</span")
-      } else {
-        return options.fn(this)
-      }
-    },
+//     Spoilery: function() {
+//       if (Review.spoiler) {
+//         return safeString("<span class='spoiler'>" + options.fn(this) + "</span")
+//       } else {
+//         return options.fn(this)
+//       }
+//     },
 
 
-  }
-});
+//   }
+// });
 
 
 

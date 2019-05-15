@@ -1,5 +1,5 @@
 var expect = require("chai").expect;
-const javascript = require("../public/js/index");
+const javascript = require("../js/home");
 
 // describe("canary test", function() {
 //   // A "canary" test is one we set up to always pass
@@ -8,8 +8,6 @@ const javascript = require("../public/js/index");
 //     expect(true).to.be.true;
 //   });
 // });
-describe("front-end-js", function() {
-  it("should return reviews of that movie", function() {
-    expect(2).to.be
-  })
-})
+describe("getrequests", function() {
+  
+});

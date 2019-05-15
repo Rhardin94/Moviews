@@ -1,6 +1,6 @@
 //Waits for HTML/Handlebars to load before running scripts
 $(document).ready(function () {
-  let spoilers = $(".spoilers").attr("spoiler");
+  let spoilers = false;
   //On-click to turn spoilers on or off
   $(".spoilers").on("click", function(event) {
     event.preventDefault();
@@ -13,7 +13,7 @@ $(document).ready(function () {
     };
   });
   //On-click to get reviews
-  $(".reviews").on("click", function (event) {
+  $(".reviews").on("click", function(event) {
     //Prevent buttons from navigating away from page
     event.preventDefault();
     //loggin the id of each movie
@@ -115,7 +115,8 @@ $(document).ready(function () {
       reviewText.attr("placeholder", "Leave review here");
       //Actual spoiler button
       let spoilerBtn = $("<input>").attr("type", "checkbox");
-      spoilerBtn.attr("autocomplete", "off");
+      spoilerBtn.attr("contains-spoiler", false);
+      spoilerBtn.attr("checked");
       spoilerBtn.addClass("spoiler");
       //submit button for review
       let submitReview = $("<button style= 'font: italic small-caps bold 16px cursive'>").attr("type", "submit");
@@ -131,6 +132,14 @@ $(document).ready(function () {
       //Set the modal-body to contain the form
       $(".modal-body").html(reviewForm);
   });
+  //On-click to assign spoiler boolean to review via checkbox
+  $(document).on("click", ".spoiler", function() {
+    if ($(this).prop("checked") === true) {
+      $(this).attr("contains-spoiler", true);
+    } else {
+      $(this).attr("contains-spoiler", false);
+    }
+  })
   //On-click to submit review
   $(document).on("click", ".submitBtn", function (event) {
     //prevent submit button from refreshing page
@@ -142,7 +151,7 @@ $(document).ready(function () {
       //create object that contains new review
       let newReview = {
         text: $(".review-text").val().trim(),
-        spoiler: $("spoiler").val(),
+        spoiler: $(".spoiler").attr("contains-spoiler"),
         MovieId: $(".modal-title").attr("MovieId")
       };
       //Sends the post request to create a new review
