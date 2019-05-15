@@ -12,29 +12,24 @@ module.exports = function(app) {
     });
   });
   //Passport routes
-  app.get("/dashboard", (req, res) => {
-    res.render("dashboard");
+  app.get("/signin", (req, res) => {
+    res.render("signin");
   });
   app.get("/signup", (req, res) => {
     res.render("signup");
   });
-  /*
-  app.get("/signin-block", (req, res) => {
-    res.render("signin-block");
-  });
-  */
   app.get("/logout", (req, res) => {
     // eslint-disable-next-line no-unused-vars
     req.session.destroy(function(err) {
       res.redirect("/");
     });
   });
-  //Function that requires user to login before moving past homepage
+  //Function that requires user to login before moving past to next page
   function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
       return next();
     }
-    res.redirect("/dashboard");
+    res.redirect("/signin");
   }
   // Render 404 page for any unmatched routes
   app.get("*", (req, res) => {

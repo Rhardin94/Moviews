@@ -78,6 +78,6 @@ module.exports = function (app, passport) {
     next();
   }, passport.authenticate("local-signin", {
     successRedirect: "/",
-    failureRedirect: "/dashboard"
+    failureRedirect: "/signin"
   }));
 };

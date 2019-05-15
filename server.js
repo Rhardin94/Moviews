@@ -2,7 +2,6 @@
 //Importing .env configuration for .env sensitive information
 require("dotenv").config();
 //Dependencies
-const path = require("path");
 const passport = require("passport");
 const express = require("express");
 const session = require("express-session");
@@ -22,32 +21,11 @@ app.use(passport.session());
 // Handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-// Routes
+//Passport strategies
 require("./config/passport/passport")(passport, models.User);
+// Routes
 require("./routes/apiRoutes")(app, passport);
 require("./routes/htmlRoutes")(app);
-
-
-
-let handlebars = require("express-handlebars").create({
-  layoutsDir: path.join(__dirname, "views/layouts"),
-  partialsDir: path.join(__dirname, "views/partials"),
-  defaultLayout: "main",
-  extname: ".handlebars"
-});
-
-
-
-app.engine("handlebars", handlebars.engine);
-app.set("view engine", "handlebars");
-app.set("views", path.join(__dirname, "views"));
-
-app.get("/", function(req, res){
-  res.render("index");
-});
-
-//Importing passport strategies
-//require("./routes/auth")(app, passport);
 let syncOptions = { force: false };
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
