@@ -3,6 +3,7 @@
 Moviews is a full-stack web app, hosted on heroku, that interacts with the Moviews MySQL Database. It allows the users to read reviews and filter out spoilers via our spoiler toggle feature. It also allows users to write reviews for selected movies once logged in that may or may not contain spoilers, determined by the spoiler checkbox.
 ## How to use
 When first opening the site, the user is directed to the signup page.
+
 ![signup page](assets/images/signup.png)
 
 With the option to sign in if they already have an account.
