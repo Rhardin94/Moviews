@@ -1,0 +1,217 @@
+.list-group-item {
+  line-height: 2.5;
+}
+@import url("https://fonts.googleapis.com/css?family=Lato:400|Josefin+Sans:700");
+html {
+  overflow-x: hidden;
+}
+
+.buryIt{
+  display: none !important;
+}
+
+body {
+  background: url('../img/slide1.jpeg') no-repeat center center fixed;  font-size: 15px;
+  font-weight: 400;
+  font-family: 'Lato', sans-serif;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-font-smoothing: subpixel-antialiased;
+  color: #212121;
+  line-height: 25px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow-x: hidden;
+  border: 3px solid goldenrod;
+  background-color: darkred;
+}
+
+img {
+  border: 5px solid goldenrod;
+  margin: 3%;
+}
+
+.footer {
+  background-color: darkred;
+}
+
+h1, h2, h3, h4 {
+  font-size: 36px;
+  font-weight: 700;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+a {
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a a:focus {
+  outline: none;
+}
+
+/* Reviews Styling */
+p {
+  font-weight: 400;
+  font-family: 'Lato', sans-serif;
+  margin: 0px;
+  font-size: 14px;
+}
+
+ul, ol {
+  list-style: outside none none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li, ol li {
+  list-style: none;
+}
+
+textarea {
+  resize: none;
+}
+
+/* Button */
+.btn {
+  
+  font-size: 14px;
+  padding: 12px 20px;
+  margin: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 400;
+  color: #fff;
+  text-transform: uppercase;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  display: inline-block;
+}
+
+.btn i {
+  margin-right: 5px;
+}
+
+.btn:focus,
+.btn:active {
+  box-shadow: none;
+  outline: none;
+  color: #fff;
+}
+
+.btn-common {
+  background-color: #E91E63;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-common:hover {
+  color: #fff;
+  background: #F50057;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.1);
+  transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -webkit-transition: all .2s ease-in-out;
+}
+
+.btn-border {
+  color: #fff;
+  background-color: transparent;
+  border: 1px solid #fff;
+}
+
+.btn-border:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-lg {
+  padding: 12px 34px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.btn-rm {
+  padding: 7px 10px;
+  text-transform: capitalize;
+}
+
+
+.icon-close, .icon-check {
+  color: #E91E63;
+}
+
+.bg-drack {
+  background: #f1f1f1;
+}
+
+.bg-white {
+  background: #fff;
+}
+
+.mb-30 {
+  margin-bottom: 30px;
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
+
+
+/* reviews Item */
+.reviews {
+  background: #fff;
+}
+
+.padding-none {
+  padding: 0;
+  border-left: 4px solid #ddd;
+  border-bottom: 4px solid #ddd;
+}
+
+.padding-none:nth-child(1) {
+  border-left: none;
+}
+
+.padding-none:nth-child(4) {
+  border-bottom: none;
+  border-left: none;
+}
+
+.padding-none:nth-child(5) {
+  border-bottom: none;
+}
+
+.padding-none:nth-child(6) {
+  border-bottom: none;
+}
+
+.reviews-wrapper {
+  margin-top: 30px;
+}
+
+.spoiler {
+  border: 1px dotted #7f7f7f;
+  border-top: none;
+  background: hsla(0,0%,74.5%,.13);
+  color: transparent;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+
+.card-img-top {
+  width: 200px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}

@@ -109,6 +109,8 @@ $(document).ready(function () {
     //Actual text area to capture review message
     let reviewText = $("<textarea>").addClass("form-control review-text");
     reviewText.attr("id", "message");
+    reviewText.attr("rows", "5");
+    reviewText.addClass("m-1")
     reviewText.attr("placeholder", "Leave review here");
     //Actual spoiler button
     let spoilerBtn = $("<input>").attr("type", "checkbox");
